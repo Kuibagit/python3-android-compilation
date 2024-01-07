@@ -145,6 +145,7 @@ def build_package(pkg: Package):
     try:
         saved_env = os.environ.copy()
         pkg.build()
+        self.run(['make'], check=False)
     finally:
         os.environ.clear()
         os.environ.update(saved_env)
