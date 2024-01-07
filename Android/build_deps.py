@@ -167,7 +167,8 @@ def main():
     )
 
     for pkg_cls in package_classes:
-        build_package(pkg_cls(args.target_arch_name, args.android_api_level))
+        pkg_obj = pkg_cls(args.target_arch_name, args.android_api_level)
+        pkg_obj.build(
 
 if __name__ == '__main__':
     main()
