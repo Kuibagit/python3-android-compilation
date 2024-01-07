@@ -8,7 +8,7 @@ THIS_DIR="$PWD"
 PYVER=3.9.0
 SRCDIR=src/Python-$PYVER
 
-COMMON_ARGS="--arch ${ARCH:-arm} --api ${ANDROID_API:-21}"
+COMMON_ARGS="--arch ${ARCH:-arm64} --api ${ANDROID_API:-23}"
 
 if [ ! -d $SRCDIR ]; then
     mkdir -p src
