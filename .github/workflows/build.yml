@@ -22,7 +22,7 @@ jobs:
         default: "${{ matrix.python }}"
         command: |
           #pyenv global ${{ matrix.python }}
-          python --version
+          python -V
 
 
     - name: Setup NDK
@@ -40,11 +40,14 @@ jobs:
             ANDROID_NDK=/android-ndk-$NDK_VER
         fi
         pwd && ls -l
-        # cd /python3-android
-        # chmod +x clean.sh
-        # ./clean.sh
-        # ARCH=arm64 ANDROID_API=21 ./build.sh
-        # tree
+        
+    - name: build-python
+      run: |
+        chmod +x clean.sh
+        chmod +x build.sh
+        ./clean.sh
+        ARCH=arm64 ANDROID_API=21 ./build.sh
+        ls -l && ls -l build/
         
 
     # - name: Save build artifacts
