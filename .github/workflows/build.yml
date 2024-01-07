@@ -16,18 +16,17 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Install pyenv and Python version
+    - name: Install Python via Pyenv
       uses: gabrielfalcao/pyenv-action@v18
       with:
         default: "${{ matrix.python }}"
         command: |
-          # 安装 pyenv 和指定版本的 Python
-          pyenv install ${{ matrix.python }}
-          pyenv global ${{ matrix.python }}
+          #pyenv global ${{ matrix.python }}
           python --version
 
     - name: Run clean.sh and build.sh
       run: |
+        ls -l
         chmod +x clean.sh
         ./clean.sh
         ARCH=arm64 ANDROID_API=21 ./build.sh
@@ -35,6 +34,7 @@ jobs:
     - name: Save build artifacts
       run: |
         mkdir build_artifacts
+        ls -l
         cp -r build/* build_artifacts/
         echo ::set-output name=build_artifacts_path::build_artifacts
 
