@@ -16,8 +16,12 @@ class Package:
         self.target_arch = ARCHITECTURES[target_arch_name]
         self.android_api_level = android_api_level
 
+    # def run(self, cmd: List[str]):
+    #     cwd = BASE / 'deps' / re.sub(r'\.tar\..*', '', os.path.basename(self.source))
+    #     logger.debug(f'Running in {cwd}: ' + ' '.join([shlex.quote(str(arg)) for arg in cmd]))
+    #     subprocess.check_call(cmd, cwd=cwd)
     def run(self, cmd: List[str]):
-        cwd = BASE / 'deps' / re.sub(r'\.tar\..*', '', os.path.basename(self.source))
+        cwd = str(BASE / 'deps' / re.sub(r'\.tar\..*', '', os.path.basename(self.source)))
         logger.debug(f'Running in {cwd}: ' + ' '.join([shlex.quote(str(arg)) for arg in cmd]))
         subprocess.check_call(cmd, cwd=cwd)
 
