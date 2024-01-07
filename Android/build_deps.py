@@ -144,8 +144,8 @@ def build_package(pkg: Package):
 
     try:
         saved_env = os.environ.copy()
-        pkg.build()
-        self.run(['make'], check=False)
+        pkg_obj = pkg(args.target_arch_name, args.android_api_level)  # 创建 pkg 的实例
+        pkg_obj.build()  # 调用实例的 build 方法
     finally:
         os.environ.clear()
         os.environ.update(saved_env)
