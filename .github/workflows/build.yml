@@ -34,7 +34,7 @@ jobs:
       run: |
         chmod +x clean.sh
         ./clean.sh
-        ARCH=arm64 ANDROID_API=21 ./build.sh
+        ARCH=arm64 ANDROID_API=23 ./build.sh
 
     - name: Save build artifacts
       run: |
